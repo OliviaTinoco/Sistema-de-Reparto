@@ -1,0 +1,39 @@
+CREATE DATABASE bdsistemadereparto;
+
+-- TABLE: VEHICULO 
+--
+
+CREATE TABLE VEHICULO(
+    pk_codvehi      INT	           NOT NULL AUTO_INCREMENT,
+    placa_vehi      VARCHAR(10)    NOT NULL,
+    chasis_vehi     VARCHAR(20)    NOT NULL,
+    color_vehi      VARCHAR(15)    NOT NULL,
+    linea_vehi      VARCHAR(20)    NOT NULL,
+    marca_vehi      VARCHAR(20)    NOT NULL,
+    estado_vehi     VARCHAR(10)    NOT NULL,
+    CONSTRAINT PK14 PRIMARY KEY (pk_codvehi)
+);
+
+-- 
+-- TABLE: MANTENIMIENTO 
+--
+
+CREATE TABLE MANTENIMIENTO(
+    pk_codmanten         INT		  NOT NULL AUTO_INCREMENT,
+    fk_codvehi      	 INT              NOT NULL 
+    fec_ulti_manten      DATE             NULL,
+    fec_sig_manten       DATE             NULL,
+    kilo_recor_manten    VARCHAR(10)      NOT NULL,
+    kilo_final_manten    VARCHAR(10)      NOT NULL,
+    observ_manten        VARCHAR(150)     NULL,
+    estado_mante	 VARCHAR(15)      NULL
+    CONSTRAINT PK15 PRIMARY KEY (pk_codmanten)
+);
+
+-- 
+-- 
+--
+    ALTER TABLE MANTENIMIENTO  ADD CONSTRAINT RefMANTENIMIENTO76 
+    FOREIGN KEY (fk_codvehi)
+    REFERENCES VEHICULO(pk_codvehi);
+ 
