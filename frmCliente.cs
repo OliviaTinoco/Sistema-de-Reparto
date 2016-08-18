@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace sistemareparto
 {
@@ -16,6 +17,99 @@ namespace sistemareparto
         public cliente()
         {
             InitializeComponent();
+        }
+
+        void ayudar()
+        {
+            string ruta = @"C:\Users\ale_\Desktop\Repositorio.pdf";
+            ProcessStartInfo startinfo = new ProcessStartInfo();
+            startinfo.FileName = "AcroRd32.exe";
+            startinfo.Arguments = ruta;
+            Process.Start(startinfo);
+        }
+
+        public void mostrar()
+        {
+            dgv_cliente.DataSource = clsClientedal.grid();
+            dgv_dir.DataSource = clsClientedal.grid2();
+            dgv_tel.DataSource = clsClientedal.grid3();
+        }
+
+        void Limpiar()
+        {
+            txt_pnombre.Clear();
+            txt_snombre.Clear();
+            txt_papellido.Clear();
+            txt_sapellido.Clear();
+            txt_nit.Clear();
+            txt_fechanac.Clear();           
+            txt_zona.Clear();
+            txt_calle.Clear();
+            txt_avenida.Clear();
+            txt_zona1.Clear();
+            txt_calle1.Clear();
+            txt_avenida1.Clear();
+            txt_zona2.Clear();
+            txt_calle2.Clear();
+            txt_avenida2.Clear();
+            txt_tel.Clear();
+            txt_tel1.Clear();
+            txt_tel2.Clear();        
+
+        }
+
+        void Habilitar()
+        {
+
+            txt_pnombre.Enabled = true;
+            txt_snombre.Enabled = true;
+            txt_papellido.Enabled = true;
+            txt_sapellido.Enabled = true;
+            txt_nit.Enabled = true;
+            txt_fechanac.Enabled = true;
+            txt_zona.Enabled = true;
+            txt_calle.Enabled = true;
+            txt_avenida.Enabled = true;
+            txt_zona1.Enabled = true;
+            txt_calle1.Enabled = true;
+            txt_avenida1.Enabled = true;
+            txt_zona2.Enabled = true;
+            txt_calle2.Enabled = true;
+            txt_avenida2.Enabled = true;
+            txt_tel.Enabled = true;
+            txt_tel1.Enabled = true;
+            txt_tel2.Enabled = true;
+            //btn_guardar.Enabled = true;
+            btn_cancelar.Enabled = true;
+
+        }
+
+        void Deshabilitar()
+        {
+            txt_pnombre.Enabled = false;
+            txt_snombre.Enabled = false;
+            txt_papellido.Enabled = false;
+            txt_sapellido.Enabled = false;
+            txt_nit.Enabled = false; 
+            txt_fechanac.Enabled = false;
+            txt_zona.Enabled = false;
+            txt_calle.Enabled = false;
+            txt_avenida.Enabled = false;
+            txt_zona1.Enabled = false;
+            txt_calle1.Enabled = false;
+            txt_avenida1.Enabled = false;
+            txt_zona2.Enabled = false;
+            txt_calle2.Enabled = false;
+            txt_avenida2.Enabled = false;
+            txt_tel.Enabled = false;
+            txt_tel1.Enabled = false;
+            txt_tel2.Enabled = false;
+            btn_guardar.Enabled = false;
+            btn_cancelar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_modificar.Enabled = false;
+
+
         }
 
         public clsCliente ClienteActual { get; set;}                
@@ -33,9 +127,9 @@ namespace sistemareparto
 
         private void cliente_Load(object sender, EventArgs e)
         {
-            dgv_cliente.DataSource = clsClientedal.grid();
-            dgv_dir.DataSource = clsClientedal.grid2();
-            dgv_tel.DataSource = clsClientedal.grid3();            
+            mostrar();
+            Deshabilitar();
+            Limpiar();            
         }
 
         private void mdir_btn_Click(object sender, EventArgs e)
@@ -97,10 +191,17 @@ namespace sistemareparto
 
                 txt_zona.Text = fin.DireccionSeleccionada.zona;
                 txt_calle.Text = fin.DireccionSeleccionada.calle;
-                txt_avenida.Text = fin.DireccionSeleccionada.avenida;              
+                txt_avenida.Text = fin.DireccionSeleccionada.avenida;
+
+                txt_tel.Text = fin.TelefonoSeleccionado.telefono;           
                 
                 // MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }        
+            }
+            Habilitar();
+            btn_modificar.Enabled = true;
+            btn_eliminar.Enabled = true;
+            btn_guardar.Enabled = false;
+            btn_nuevo.Enabled = false;
         }
 
         private void busc_btndir_Click(object sender, EventArgs e)
@@ -174,6 +275,7 @@ namespace sistemareparto
 
 
                 }
+                conectar.Close();
                 // MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             int resultado1 = clsDircdal.Agregar(pDircliente);
@@ -194,6 +296,7 @@ namespace sistemareparto
                     pTelcliente1.idc = _reader.GetInt16(0);
                     pTelcliente2.idc = _reader.GetInt16(0);
                 }
+                conectar.Close();
             }
 
             int resultado4 = clsTelcdal.Agregar(pTelcliente);
@@ -203,11 +306,12 @@ namespace sistemareparto
             if(resultado4 > 0 && resultado5 > 0 && resultado6 > 0)
             {
                 MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Insertar", "Cliente");
             }
             else
             {
                 MessageBox.Show("FALLO");
-            }                       
+            }
 
             //------------mostrar en el grid 
             /*MySqlConnection conectar = clsBdComun.ObtenerConexion();
@@ -217,6 +321,11 @@ namespace sistemareparto
             dgv_cliente.DataSource = dsuario;
             dgv_cliente.DataMember = "cliente";
             conexion.Close();*/
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
+
         }
 
         private void dgv_cliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -239,17 +348,26 @@ namespace sistemareparto
             if (clsClientedal.Actualizar(pCliente) > 0)
             {
                 MessageBox.Show("Los datos del cliente se actualizaron", "Datos Actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Modificar", "Cliente");
+
             }
             else
             {
                 MessageBox.Show("No se pudo actualizar", "Error al Actualizar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;           
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
@@ -259,6 +377,8 @@ namespace sistemareparto
                 if (clsClientedal.Eliminar(ClienteActual.id) > 0)
                 {
                     MessageBox.Show("Cliente Eliminado Correctamente!", "Cliente Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Eliminar", "Cliente");
+
                 }
                 else
                 {
@@ -267,6 +387,26 @@ namespace sistemareparto
             }
             else
                 MessageBox.Show("Se cancelo la eliminacion", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
+        }
+
+        private void btn_nuevo_Click(object sender, EventArgs e)
+        {
+            Habilitar();
+            btn_guardar.Enabled = true;
+            btn_modificar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_buscar.Enabled = false;
+            mostrar();
+        }
+
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+            ayudar();
         }
     }
 }

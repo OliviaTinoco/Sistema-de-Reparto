@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sistemareparto
 {
-    class clsTelcliente
+    public class clsTelcliente
     {
         //public int id { get; set; }
         public int idc { get; set; }

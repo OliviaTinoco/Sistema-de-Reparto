@@ -11,21 +11,24 @@ namespace sistemareparto
     {
         public static int Agregar(clsCliente pCliente)
         {
-
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             int retorno = 0;
 
             MySqlCommand comando = new MySqlCommand(string.Format("Insert into cliente (pnom_clte, snom_clte, papel_clte, saple_clte, nit_clte, fec_nac_clte) values ('{0}','{1}','{2}', '{3}', '{4}', '{5}')",
-                pCliente.pnombre, pCliente.snombre, pCliente.papellido, pCliente.sapellido, pCliente.nit, pCliente.fecha_nac), clsBdComun.ObtenerConexion());
+                pCliente.pnombre, pCliente.snombre, pCliente.papellido, pCliente.sapellido, pCliente.nit, pCliente.fecha_nac), conectar);
             retorno = comando.ExecuteNonQuery();
-            return retorno;
+            conectar.Close();
+            return retorno;            
         }
 
         public static List<clsCliente> Buscar(string pNombre, string pApellido)
         {
             List<clsCliente> _lista = new List<clsCliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
+
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codclte, pnom_clte, snom_clte, papel_clte, saple_clte, nit_clte, fec_nac_clte FROM cliente where pnom_clte ='{0}' or papel_clte='{1}'", pNombre, pApellido),  clsBdComun.ObtenerConexion());
+           "SELECT pk_codclte, pnom_clte, snom_clte, papel_clte, saple_clte, nit_clte, fec_nac_clte FROM cliente where pnom_clte ='{0}' or papel_clte='{1}'", pNombre, pApellido),  conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -55,7 +58,7 @@ namespace sistemareparto
 
                 _lista.Add(pCliente);                
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -117,8 +120,10 @@ namespace sistemareparto
         {
             List<clsCliente> _lista = new List<clsCliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
+
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codclte, pnom_clte, snom_clte, papel_clte, saple_clte, nit_clte, fec_nac_clte FROM cliente"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codclte, pnom_clte, snom_clte, papel_clte, saple_clte, nit_clte, fec_nac_clte FROM cliente"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -148,7 +153,7 @@ namespace sistemareparto
 
                 _lista.Add(pCliente);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -156,8 +161,9 @@ namespace sistemareparto
         {
             List<clsDircliente> _lista = new List<clsDircliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codclte, zona_dir_clte, calle_dir_clte, aven_dir_clte FROM direccion_clte"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codclte, zona_dir_clte, calle_dir_clte, aven_dir_clte FROM direccion_clte"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -184,7 +190,7 @@ namespace sistemareparto
 
                 _lista.Add(pDircliente);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -192,8 +198,9 @@ namespace sistemareparto
         {
             List<clsTelcliente> _lista = new List<clsTelcliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codclte, telefono FROM telefono_clte"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codclte, telefono FROM telefono_clte"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -220,7 +227,7 @@ namespace sistemareparto
 
                  _lista.Add(pTelcliente);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -228,8 +235,9 @@ namespace sistemareparto
         {
             List<clsDircliente> _lista = new List<clsDircliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT d.pk_codclte, d.zona_dir_clte, d.calle_dir_clte, d.aven_dir_clte, c.pnom_clte, c.papel_clte FROM direccion_clte d, cliente c where c.pnom_clte ='{0}' or c.papel_clte='{1}'", pNombre, pApellido), clsBdComun.ObtenerConexion());
+           "SELECT d.pk_codclte, d.zona_dir_clte, d.calle_dir_clte, d.aven_dir_clte, c.pnom_clte, c.papel_clte FROM direccion_clte d, cliente c where c.pnom_clte ='{0}' or c.papel_clte='{1}'", pNombre, pApellido), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -256,7 +264,7 @@ namespace sistemareparto
 
                 _lista.Add(pdir);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -277,6 +285,59 @@ namespace sistemareparto
 
             conexion.Close();
             return pdire;
+
+        }
+
+        public static List<clsTelcliente> Buscartel(string pNombre, string pApellido)
+        {
+            List<clsTelcliente> _lista = new List<clsTelcliente>();
+
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
+            MySqlCommand _comando = new MySqlCommand(String.Format(
+           "SELECT t.pk_codclte, t.telefono, c.pnom_clte, c.papel_clte FROM telefono_clte t, cliente c where c.pnom_clte ='{0}' or c.papel_clte='{1}'", pNombre, pApellido), conectar);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                clsTelcliente ptel = new clsTelcliente();
+                ptel.idc = _reader.GetInt32(0);
+                ptel.telefono = _reader.GetString(1);
+
+                /*clsDircliente pDircliente = new clsDircliente();
+                //pDircliente.id = _reader.GetInt32(7);
+                //pDircliente.idc = _reader.GetInt32(8);
+                pDircliente.zona = _reader.GetString(7);
+                pDircliente.calle = _reader.GetString(8);
+                pDircliente.avenida = _reader.GetString(9);
+
+                clsTelcliente pTelcliente = new clsTelcliente();
+                //pTelcliente.id = _reader.GetInt32(12);
+                //pTelcliente.idc = _reader.GetInt32(13);
+                pTelcliente.telefono = _reader.GetString(10);*/
+
+
+                //pk_codclte, pnom_clte, snom_clte, papel_clte, sapel_clte, nit_clte, fec_nac_clte
+
+                _lista.Add(ptel);
+            }
+            conectar.Close();
+            return _lista;
+        }
+
+        public static clsTelcliente ObtenerTelefono(int pId)
+        {
+            clsTelcliente ptel = new clsTelcliente();
+            MySqlConnection conexion = clsBdComun.ObtenerConexion();
+
+            MySqlCommand _comando = new MySqlCommand(String.Format("SELECT pk_codclte, telefono FROM telefono_clte where pk_codclte={0}", pId), conexion);
+            MySqlDataReader _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                ptel.idc = _reader.GetInt32(0);
+                ptel.telefono = _reader.GetString(1);
+            }
+
+            conexion.Close();
+            return ptel;
 
         }
     }

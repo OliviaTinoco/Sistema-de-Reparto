@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace sistemareparto
 {
@@ -16,6 +17,99 @@ namespace sistemareparto
         public frmEmpleado()
         {
             InitializeComponent();
+        }
+
+        void ayudar()
+        {
+            string ruta = @"C:\Users\ale_\Desktop\Repositorio.pdf";
+            ProcessStartInfo startinfo = new ProcessStartInfo();
+            startinfo.FileName = "AcroRd32.exe";
+            startinfo.Arguments = ruta;
+            Process.Start(startinfo);
+        }
+
+        public void mostrar()
+        {
+            dgv_empleado.DataSource = clsEmpleadodal.grid();
+            dgv_diremp.DataSource = clsEmpleadodal.grid2();
+            dgv_telemp.DataSource = clsEmpleadodal.grid3();
+            dgv_correo.DataSource = clsEmpleadodal.grid4();
+        }
+
+        void Limpiar()
+        {
+            txt_pnombre.Clear();
+            txt_snombre.Clear();
+            txt_papellido.Clear();
+            txt_sapellido.Clear();
+            txt_nit.Clear();
+            txt_fechanac.Clear();
+            txt_zona.Clear();
+            txt_calle.Clear();
+            txt_avenida.Clear();
+            txt_zona1.Clear();
+            txt_calle1.Clear();
+            txt_avenida1.Clear();            
+            txt_tel.Clear();
+            txt_tel1.Clear();
+            txt_correo.Clear();
+            txt_correo1.Clear();
+            txt_estado.Clear();
+            txt_sueldo.Clear();
+            //cbo_emp = null;            
+
+        }
+
+        void Habilitar()
+        {
+
+            txt_pnombre.Enabled = true;
+            txt_snombre.Enabled = true;
+            txt_papellido.Enabled = true;
+            txt_sapellido.Enabled = true;
+            txt_nit.Enabled = true;
+            txt_fechanac.Enabled = true;
+            txt_zona.Enabled = true;
+            txt_calle.Enabled = true;
+            txt_avenida.Enabled = true;
+            txt_zona1.Enabled = true;
+            txt_calle1.Enabled = true;
+            txt_avenida1.Enabled = true;            
+            txt_tel.Enabled = true;
+            txt_tel1.Enabled = true;
+            txt_correo.Enabled = true;
+            txt_correo1.Enabled = true;
+            cbo_emp.Enabled = true;            
+            //btn_guardar.Enabled = true;
+            btn_cancelar.Enabled = true;
+
+        }
+
+        void Deshabilitar()
+        {
+            txt_pnombre.Enabled = false;
+            txt_snombre.Enabled = false;
+            txt_papellido.Enabled = false;
+            txt_sapellido.Enabled = false;
+            txt_nit.Enabled = false;
+            txt_fechanac.Enabled = false;
+            txt_zona.Enabled = false;
+            txt_calle.Enabled = false;
+            txt_avenida.Enabled = false;
+            txt_zona1.Enabled = false;
+            txt_calle1.Enabled = false;
+            txt_avenida1.Enabled = false;
+            txt_tel.Enabled = false;
+            txt_tel1.Enabled = false;
+            txt_correo.Enabled = false;
+            txt_correo1.Enabled = false;
+            cbo_emp.Enabled = false;
+            btn_guardar.Enabled = false;
+            btn_cancelar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_modificar.Enabled = false;
+
+
         }
 
         public clsEmpleado EmpleadoActual { get; set; }
@@ -45,6 +139,12 @@ namespace sistemareparto
                 txt_correo.Text = fin.CorreoSeleccionado.correo;
                 // MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            Habilitar();
+            btn_modificar.Enabled = true;
+            btn_eliminar.Enabled = true;
+            btn_guardar.Enabled = false;
+            btn_nuevo.Enabled = false;
         }
 
         private void mdir_btn_Click(object sender, EventArgs e)
@@ -104,11 +204,9 @@ namespace sistemareparto
             {
                 cbo_emp.Items.Add(mdr.GetString("nom_puesto"));
             }*/
-
-            dgv_empleado.DataSource = clsEmpleadodal.grid();           
-            dgv_diremp.DataSource = clsEmpleadodal.grid2();
-            dgv_telemp.DataSource = clsEmpleadodal.grid3();
-            dgv_correo.DataSource = clsEmpleadodal.grid4();
+            Limpiar();
+            Deshabilitar();
+            mostrar();
         }
 
         private void cbo_emp_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,7 +224,13 @@ namespace sistemareparto
                 cbo_emp.Items.Add(mdr.GetString("nom_puesto"));
             }
 
-            dgv_empleado.DataSource = clsEmpleadodal.grid();
+            //dgv_empleado.DataSource = clsEmpleadodal.grid();
+            Limpiar();
+            Habilitar();
+            btn_modificar.Enabled = false;
+            btn_eliminar.Enabled = false;
+            btn_buscar.Enabled = false;
+            mostrar();
 
         }
 
@@ -191,6 +295,7 @@ namespace sistemareparto
                         pDiremp1.ide = _reader.GetInt16(0);
 
                     }
+                    conectar.Close();
                     // MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 int resultado1 = clsDiredal.Agregar(pDiremp);
@@ -209,6 +314,7 @@ namespace sistemareparto
                         pTelemp.ide = _reader.GetInt16(0);
                         pTelemp1.ide = _reader.GetInt16(0);
                     }
+                    conectar.Close();
                 }
 
                 int resultado3 = clsTeledal.Agregar(pTelemp);
@@ -227,7 +333,8 @@ namespace sistemareparto
                         pCorreoemp.ide = _reader.GetInt16(0);
                         pCorreoemp1.ide = _reader.GetInt16(0);
                     }
-                    MessageBox.Show(Convert.ToString(pCorreoemp.ide));
+                    conectar.Close();
+                    //MessageBox.Show(Convert.ToString(pCorreoemp.ide));
                 }
 
                 int resultado5 = clsCorreoedal.Agregar(pCorreoemp);
@@ -236,6 +343,8 @@ namespace sistemareparto
                 if (resultado5 > 0 && resultado6 > 0)
                 {
                     MessageBox.Show("Cliente Guardado Con Exito!!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Insertar", "Empleado");
+
                 }
                 else
                 {
@@ -248,8 +357,8 @@ namespace sistemareparto
                 DataSet dsuario = new DataSet();
                 dausuario.Fill(dsuario, "cliente");
                 dgv_empleado.DataSource = dsuario;
-                dgv_empleado.DataMember = "cliente";
-                conectar.Close();*/
+                dgv_empleado.DataMember = "cliente";*/
+                conect.Close();
             
             }
             catch (Exception ex)
@@ -257,6 +366,11 @@ namespace sistemareparto
                 MessageBox.Show(ex.ToString());
             }
             dgv_empleado.DataSource = clsEmpleadodal.grid();
+
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;            
         }
 
         private void btn_modificar_Click(object sender, EventArgs e)
@@ -292,8 +406,10 @@ namespace sistemareparto
                     if (clsDiredal.Actualizar(pDiremp) > 0 && clsDiredal.Actualizar(pDiremp1) > 0)
                     {
                         MessageBox.Show("Los datos del cliente se actualizaron", "Datos Actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Modificar", "Empleado");
+
                     }
-                    
+
                 }
                 else
                 {
@@ -307,6 +423,10 @@ namespace sistemareparto
             }
             dgv_empleado.DataSource = clsEmpleadodal.grid();
 
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
@@ -316,6 +436,8 @@ namespace sistemareparto
                 if (clsClientedal.Eliminar(EmpleadoActual.id) > 0)
                 {
                     MessageBox.Show("Cliente Eliminado Correctamente!", "Cliente Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    usuariodal.obtenerBitacora(usuariodal.varibaleUsuario, "Eliminar", "Empleado");
+
                 }
                 else
                 {
@@ -325,6 +447,11 @@ namespace sistemareparto
             else
                 MessageBox.Show("Se cancelo la eliminacion", "Eliminacion Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             dgv_empleado.DataSource = clsEmpleadodal.grid();
+
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
         }
 
         private void dgv_empleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -335,6 +462,19 @@ namespace sistemareparto
         private void dgv_diremp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+            ayudar();
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            Deshabilitar();
+            btn_nuevo.Enabled = true;
+            btn_buscar.Enabled = true;
         }
     }
 }

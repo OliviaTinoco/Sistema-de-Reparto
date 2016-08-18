@@ -47,15 +47,7 @@
             this.txt_zona = new System.Windows.Forms.TextBox();
             this.txt_tel1 = new System.Windows.Forms.TextBox();
             this.lbl_titulo = new System.Windows.Forms.Label();
-            this.lbl_aceptar = new System.Windows.Forms.Label();
-            this.lbl_cancelar = new System.Windows.Forms.Label();
-            this.lbl_buscar = new System.Windows.Forms.Label();
-            this.lbl_eliminar = new System.Windows.Forms.Label();
-            this.lbl_actualizar = new System.Windows.Forms.Label();
-            this.lbl_guardar = new System.Windows.Forms.Label();
-            this.lbl_nuevo = new System.Windows.Forms.Label();
             this.btn_buscar = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.btn_modificar = new System.Windows.Forms.Button();
@@ -77,6 +69,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgv_dir = new System.Windows.Forms.DataGridView();
             this.dgv_tel = new System.Windows.Forms.DataGridView();
+            this.btn_ayuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_dir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_tel)).BeginInit();
@@ -232,87 +225,17 @@
             // 
             this.lbl_titulo.AutoSize = true;
             this.lbl_titulo.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(361, 9);
+            this.lbl_titulo.Location = new System.Drawing.Point(380, 9);
             this.lbl_titulo.Name = "lbl_titulo";
             this.lbl_titulo.Size = new System.Drawing.Size(115, 32);
             this.lbl_titulo.TabIndex = 20;
             this.lbl_titulo.Text = "CLIENTE";
             // 
-            // lbl_aceptar
-            // 
-            this.lbl_aceptar.AutoSize = true;
-            this.lbl_aceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_aceptar.Location = new System.Drawing.Point(652, 120);
-            this.lbl_aceptar.Name = "lbl_aceptar";
-            this.lbl_aceptar.Size = new System.Drawing.Size(70, 20);
-            this.lbl_aceptar.TabIndex = 81;
-            this.lbl_aceptar.Text = "Aceptar";
-            // 
-            // lbl_cancelar
-            // 
-            this.lbl_cancelar.AutoSize = true;
-            this.lbl_cancelar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cancelar.Location = new System.Drawing.Point(557, 120);
-            this.lbl_cancelar.Name = "lbl_cancelar";
-            this.lbl_cancelar.Size = new System.Drawing.Size(78, 20);
-            this.lbl_cancelar.TabIndex = 80;
-            this.lbl_cancelar.Text = "Cancelar";
-            // 
-            // lbl_buscar
-            // 
-            this.lbl_buscar.AutoSize = true;
-            this.lbl_buscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_buscar.Location = new System.Drawing.Point(465, 120);
-            this.lbl_buscar.Name = "lbl_buscar";
-            this.lbl_buscar.Size = new System.Drawing.Size(58, 20);
-            this.lbl_buscar.TabIndex = 79;
-            this.lbl_buscar.Text = "Buscar";
-            // 
-            // lbl_eliminar
-            // 
-            this.lbl_eliminar.AutoSize = true;
-            this.lbl_eliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_eliminar.Location = new System.Drawing.Point(383, 118);
-            this.lbl_eliminar.Name = "lbl_eliminar";
-            this.lbl_eliminar.Size = new System.Drawing.Size(63, 20);
-            this.lbl_eliminar.TabIndex = 78;
-            this.lbl_eliminar.Text = "Eliminar";
-            // 
-            // lbl_actualizar
-            // 
-            this.lbl_actualizar.AutoSize = true;
-            this.lbl_actualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actualizar.Location = new System.Drawing.Point(294, 118);
-            this.lbl_actualizar.Name = "lbl_actualizar";
-            this.lbl_actualizar.Size = new System.Drawing.Size(81, 20);
-            this.lbl_actualizar.TabIndex = 77;
-            this.lbl_actualizar.Text = "Actualizar";
-            // 
-            // lbl_guardar
-            // 
-            this.lbl_guardar.AutoSize = true;
-            this.lbl_guardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_guardar.Location = new System.Drawing.Point(207, 118);
-            this.lbl_guardar.Name = "lbl_guardar";
-            this.lbl_guardar.Size = new System.Drawing.Size(71, 20);
-            this.lbl_guardar.TabIndex = 76;
-            this.lbl_guardar.Text = "Guardar";
-            // 
-            // lbl_nuevo
-            // 
-            this.lbl_nuevo.AutoSize = true;
-            this.lbl_nuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nuevo.Location = new System.Drawing.Point(127, 118);
-            this.lbl_nuevo.Name = "lbl_nuevo";
-            this.lbl_nuevo.Size = new System.Drawing.Size(59, 20);
-            this.lbl_nuevo.TabIndex = 75;
-            this.lbl_nuevo.Text = "Nuevo";
-            // 
             // btn_buscar
             // 
             this.btn_buscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_buscar.BackgroundImage")));
             this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_buscar.Location = new System.Drawing.Point(469, 50);
+            this.btn_buscar.Location = new System.Drawing.Point(498, 49);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_buscar.Size = new System.Drawing.Size(65, 65);
@@ -320,22 +243,11 @@
             this.btn_buscar.UseVisualStyleBackColor = true;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_aceptar.BackgroundImage")));
-            this.btn_aceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_aceptar.Location = new System.Drawing.Point(644, 50);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 65);
-            this.btn_aceptar.TabIndex = 72;
-            this.btn_aceptar.UseVisualStyleBackColor = true;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
-            // 
             // btn_cancelar
             // 
             this.btn_cancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_cancelar.BackgroundImage")));
             this.btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cancelar.Location = new System.Drawing.Point(555, 50);
+            this.btn_cancelar.Location = new System.Drawing.Point(584, 49);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(65, 65);
             this.btn_cancelar.TabIndex = 71;
@@ -346,7 +258,7 @@
             // 
             this.btn_eliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.BackgroundImage")));
             this.btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_eliminar.Location = new System.Drawing.Point(379, 50);
+            this.btn_eliminar.Location = new System.Drawing.Point(408, 49);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(65, 65);
             this.btn_eliminar.TabIndex = 74;
@@ -357,7 +269,7 @@
             // 
             this.btn_modificar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_modificar.BackgroundImage")));
             this.btn_modificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_modificar.Location = new System.Drawing.Point(292, 50);
+            this.btn_modificar.Location = new System.Drawing.Point(321, 49);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(65, 65);
             this.btn_modificar.TabIndex = 70;
@@ -368,7 +280,7 @@
             // 
             this.btn_guardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_guardar.BackgroundImage")));
             this.btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_guardar.Location = new System.Drawing.Point(207, 50);
+            this.btn_guardar.Location = new System.Drawing.Point(236, 49);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(65, 65);
             this.btn_guardar.TabIndex = 69;
@@ -380,11 +292,12 @@
             // 
             this.btn_nuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_nuevo.BackgroundImage")));
             this.btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_nuevo.Location = new System.Drawing.Point(121, 50);
+            this.btn_nuevo.Location = new System.Drawing.Point(150, 49);
             this.btn_nuevo.Name = "btn_nuevo";
             this.btn_nuevo.Size = new System.Drawing.Size(65, 65);
             this.btn_nuevo.TabIndex = 68;
             this.btn_nuevo.UseVisualStyleBackColor = true;
+            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click);
             // 
             // txt_avenida
             // 
@@ -512,12 +425,24 @@
             this.dgv_tel.Size = new System.Drawing.Size(433, 122);
             this.dgv_tel.TabIndex = 99;
             // 
+            // btn_ayuda
+            // 
+            this.btn_ayuda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ayuda.BackgroundImage")));
+            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_ayuda.Location = new System.Drawing.Point(670, 49);
+            this.btn_ayuda.Name = "btn_ayuda";
+            this.btn_ayuda.Size = new System.Drawing.Size(65, 65);
+            this.btn_ayuda.TabIndex = 100;
+            this.btn_ayuda.UseVisualStyleBackColor = true;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            // 
             // cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(936, 741);
+            this.ClientSize = new System.Drawing.Size(936, 733);
+            this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.dgv_tel);
             this.Controls.Add(this.dgv_dir);
             this.Controls.Add(this.txt_tel2);
@@ -534,15 +459,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_calle);
             this.Controls.Add(this.txt_avenida);
-            this.Controls.Add(this.lbl_aceptar);
-            this.Controls.Add(this.lbl_cancelar);
-            this.Controls.Add(this.lbl_buscar);
-            this.Controls.Add(this.lbl_eliminar);
-            this.Controls.Add(this.lbl_actualizar);
-            this.Controls.Add(this.lbl_guardar);
-            this.Controls.Add(this.lbl_nuevo);
             this.Controls.Add(this.btn_buscar);
-            this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_modificar);
@@ -599,20 +516,12 @@
         private System.Windows.Forms.TextBox txt_zona;
         private System.Windows.Forms.TextBox txt_tel1;
         private System.Windows.Forms.Label lbl_titulo;
-        private System.Windows.Forms.Label lbl_cancelar;
-        private System.Windows.Forms.Label lbl_buscar;
-        private System.Windows.Forms.Label lbl_eliminar;
-        private System.Windows.Forms.Label lbl_actualizar;
-        private System.Windows.Forms.Label lbl_guardar;
-        private System.Windows.Forms.Label lbl_nuevo;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.Button btn_aceptar;
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_nuevo;
-        private System.Windows.Forms.Label lbl_aceptar;
         private System.Windows.Forms.TextBox txt_avenida;
         private System.Windows.Forms.TextBox txt_calle;
         private System.Windows.Forms.TextBox txt_calle2;
@@ -629,6 +538,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgv_dir;
         private System.Windows.Forms.DataGridView dgv_tel;
+        private System.Windows.Forms.Button btn_ayuda;
     }
 }
 

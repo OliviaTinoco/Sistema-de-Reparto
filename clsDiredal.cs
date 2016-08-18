@@ -14,9 +14,11 @@ namespace sistemareparto
 
             int retorno = 0;
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format("Insert into direccion_emp (pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp) values ('{0}','{1}','{2}','{3}')",
-               pDiremp.ide, pDiremp.zona, pDiremp.calle, pDiremp.avenida), clsBdComun.ObtenerConexion());
+               pDiremp.ide, pDiremp.zona, pDiremp.calle, pDiremp.avenida), conectar);
             retorno = comando.ExecuteNonQuery();
+            conectar.Close();
             return retorno;
         }
 
@@ -24,8 +26,9 @@ namespace sistemareparto
         {
             List<clsDiremp> _lista = new List<clsDiremp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT  pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), clsBdComun.ObtenerConexion());
+           "SELECT  pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -42,7 +45,7 @@ namespace sistemareparto
 
                 _lista.Add(pDiremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -50,8 +53,9 @@ namespace sistemareparto
         {
             List<clsDiremp> _lista = new List<clsDiremp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT  pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), clsBdComun.ObtenerConexion());
+           "SELECT  pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -68,7 +72,7 @@ namespace sistemareparto
 
                 _lista.Add(pDiremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 

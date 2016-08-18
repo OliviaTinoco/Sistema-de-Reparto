@@ -14,9 +14,11 @@ namespace sistemareparto
 
             int retorno = 0;
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format("Insert into correo_emp (pk_codemp, correo) values ('{0}','{1}')",
-               pCorreoemp.ide, pCorreoemp.correo), clsBdComun.ObtenerConexion());
+               pCorreoemp.ide, pCorreoemp.correo), conectar);
             retorno = comando.ExecuteNonQuery();
+            conectar.Clone();
             return retorno;
         }
     }

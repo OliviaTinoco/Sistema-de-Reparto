@@ -31,22 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
             this.Lbl_titulo = new System.Windows.Forms.Label();
             this.dgv_empleado = new System.Windows.Forms.DataGridView();
-            this.btn_aceptar = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.btn_modificar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
-            this.pic_empleado = new System.Windows.Forms.PictureBox();
-            this.lbl_imagen = new System.Windows.Forms.Label();
-            this.lbl_aceptar = new System.Windows.Forms.Label();
-            this.lbl_cancelar = new System.Windows.Forms.Label();
-            this.lbl_buscar = new System.Windows.Forms.Label();
-            this.lbl_eliminar = new System.Windows.Forms.Label();
-            this.lbl_actualizar = new System.Windows.Forms.Label();
-            this.lbl_guardar = new System.Windows.Forms.Label();
-            this.lbl_nuevo = new System.Windows.Forms.Label();
             this.txt_correo1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_calle1 = new System.Windows.Forms.TextBox();
@@ -84,8 +74,8 @@
             this.dgv_diremp = new System.Windows.Forms.DataGridView();
             this.dgv_telemp = new System.Windows.Forms.DataGridView();
             this.dgv_correo = new System.Windows.Forms.DataGridView();
+            this.btn_ayuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_empleado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_empleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_diremp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_correo)).BeginInit();
@@ -110,21 +100,11 @@
             this.dgv_empleado.TabIndex = 26;
             this.dgv_empleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_empleado_CellContentClick);
             // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_aceptar.BackgroundImage")));
-            this.btn_aceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_aceptar.Location = new System.Drawing.Point(683, 65);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 65);
-            this.btn_aceptar.TabIndex = 76;
-            this.btn_aceptar.UseVisualStyleBackColor = true;
-            // 
             // btn_buscar
             // 
             this.btn_buscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_buscar.BackgroundImage")));
             this.btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_buscar.Location = new System.Drawing.Point(496, 65);
+            this.btn_buscar.Location = new System.Drawing.Point(466, 64);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(65, 65);
             this.btn_buscar.TabIndex = 75;
@@ -135,17 +115,18 @@
             // 
             this.btn_cancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_cancelar.BackgroundImage")));
             this.btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cancelar.Location = new System.Drawing.Point(587, 63);
+            this.btn_cancelar.Location = new System.Drawing.Point(557, 62);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(65, 65);
             this.btn_cancelar.TabIndex = 74;
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // btn_nuevo
             // 
             this.btn_nuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_nuevo.BackgroundImage")));
             this.btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_nuevo.Location = new System.Drawing.Point(148, 63);
+            this.btn_nuevo.Location = new System.Drawing.Point(118, 62);
             this.btn_nuevo.Name = "btn_nuevo";
             this.btn_nuevo.Size = new System.Drawing.Size(65, 65);
             this.btn_nuevo.TabIndex = 73;
@@ -156,7 +137,7 @@
             // 
             this.btn_eliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.BackgroundImage")));
             this.btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_eliminar.Location = new System.Drawing.Point(419, 63);
+            this.btn_eliminar.Location = new System.Drawing.Point(389, 62);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(65, 65);
             this.btn_eliminar.TabIndex = 72;
@@ -167,7 +148,7 @@
             // 
             this.btn_modificar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_modificar.BackgroundImage")));
             this.btn_modificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_modificar.Location = new System.Drawing.Point(328, 63);
+            this.btn_modificar.Location = new System.Drawing.Point(298, 62);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(65, 65);
             this.btn_modificar.TabIndex = 71;
@@ -178,100 +159,12 @@
             // 
             this.btn_guardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_guardar.BackgroundImage")));
             this.btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_guardar.Location = new System.Drawing.Point(238, 63);
+            this.btn_guardar.Location = new System.Drawing.Point(208, 62);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(65, 65);
             this.btn_guardar.TabIndex = 70;
             this.btn_guardar.UseVisualStyleBackColor = true;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
-            // 
-            // pic_empleado
-            // 
-            this.pic_empleado.Location = new System.Drawing.Point(26, 41);
-            this.pic_empleado.Name = "pic_empleado";
-            this.pic_empleado.Size = new System.Drawing.Size(105, 64);
-            this.pic_empleado.TabIndex = 77;
-            this.pic_empleado.TabStop = false;
-            // 
-            // lbl_imagen
-            // 
-            this.lbl_imagen.AutoSize = true;
-            this.lbl_imagen.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_imagen.Location = new System.Drawing.Point(41, 108);
-            this.lbl_imagen.Name = "lbl_imagen";
-            this.lbl_imagen.Size = new System.Drawing.Size(66, 20);
-            this.lbl_imagen.TabIndex = 27;
-            this.lbl_imagen.Text = "Imagen";
-            // 
-            // lbl_aceptar
-            // 
-            this.lbl_aceptar.AutoSize = true;
-            this.lbl_aceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_aceptar.Location = new System.Drawing.Point(679, 133);
-            this.lbl_aceptar.Name = "lbl_aceptar";
-            this.lbl_aceptar.Size = new System.Drawing.Size(70, 20);
-            this.lbl_aceptar.TabIndex = 99;
-            this.lbl_aceptar.Text = "Aceptar";
-            // 
-            // lbl_cancelar
-            // 
-            this.lbl_cancelar.AutoSize = true;
-            this.lbl_cancelar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cancelar.Location = new System.Drawing.Point(584, 133);
-            this.lbl_cancelar.Name = "lbl_cancelar";
-            this.lbl_cancelar.Size = new System.Drawing.Size(78, 20);
-            this.lbl_cancelar.TabIndex = 98;
-            this.lbl_cancelar.Text = "Cancelar";
-            // 
-            // lbl_buscar
-            // 
-            this.lbl_buscar.AutoSize = true;
-            this.lbl_buscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_buscar.Location = new System.Drawing.Point(492, 133);
-            this.lbl_buscar.Name = "lbl_buscar";
-            this.lbl_buscar.Size = new System.Drawing.Size(58, 20);
-            this.lbl_buscar.TabIndex = 97;
-            this.lbl_buscar.Text = "Buscar";
-            // 
-            // lbl_eliminar
-            // 
-            this.lbl_eliminar.AutoSize = true;
-            this.lbl_eliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_eliminar.Location = new System.Drawing.Point(410, 131);
-            this.lbl_eliminar.Name = "lbl_eliminar";
-            this.lbl_eliminar.Size = new System.Drawing.Size(63, 20);
-            this.lbl_eliminar.TabIndex = 96;
-            this.lbl_eliminar.Text = "Eliminar";
-            // 
-            // lbl_actualizar
-            // 
-            this.lbl_actualizar.AutoSize = true;
-            this.lbl_actualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actualizar.Location = new System.Drawing.Point(321, 131);
-            this.lbl_actualizar.Name = "lbl_actualizar";
-            this.lbl_actualizar.Size = new System.Drawing.Size(81, 20);
-            this.lbl_actualizar.TabIndex = 95;
-            this.lbl_actualizar.Text = "Actualizar";
-            // 
-            // lbl_guardar
-            // 
-            this.lbl_guardar.AutoSize = true;
-            this.lbl_guardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_guardar.Location = new System.Drawing.Point(234, 131);
-            this.lbl_guardar.Name = "lbl_guardar";
-            this.lbl_guardar.Size = new System.Drawing.Size(71, 20);
-            this.lbl_guardar.TabIndex = 94;
-            this.lbl_guardar.Text = "Guardar";
-            // 
-            // lbl_nuevo
-            // 
-            this.lbl_nuevo.AutoSize = true;
-            this.lbl_nuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nuevo.Location = new System.Drawing.Point(154, 131);
-            this.lbl_nuevo.Name = "lbl_nuevo";
-            this.lbl_nuevo.Size = new System.Drawing.Size(59, 20);
-            this.lbl_nuevo.TabIndex = 93;
-            this.lbl_nuevo.Text = "Nuevo";
             // 
             // txt_correo1
             // 
@@ -583,12 +476,24 @@
             this.dgv_correo.Size = new System.Drawing.Size(200, 85);
             this.dgv_correo.TabIndex = 157;
             // 
+            // btn_ayuda
+            // 
+            this.btn_ayuda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ayuda.BackgroundImage")));
+            this.btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_ayuda.Location = new System.Drawing.Point(651, 64);
+            this.btn_ayuda.Name = "btn_ayuda";
+            this.btn_ayuda.Size = new System.Drawing.Size(65, 65);
+            this.btn_ayuda.TabIndex = 158;
+            this.btn_ayuda.UseVisualStyleBackColor = true;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(908, 741);
+            this.ClientSize = new System.Drawing.Size(908, 733);
+            this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.dgv_correo);
             this.Controls.Add(this.dgv_telemp);
             this.Controls.Add(this.dgv_diremp);
@@ -627,15 +532,6 @@
             this.Controls.Add(this.lbl_snombre);
             this.Controls.Add(this.txt_pnombre);
             this.Controls.Add(this.lbl_pnombre);
-            this.Controls.Add(this.lbl_aceptar);
-            this.Controls.Add(this.lbl_cancelar);
-            this.Controls.Add(this.lbl_buscar);
-            this.Controls.Add(this.lbl_eliminar);
-            this.Controls.Add(this.lbl_actualizar);
-            this.Controls.Add(this.lbl_guardar);
-            this.Controls.Add(this.lbl_nuevo);
-            this.Controls.Add(this.pic_empleado);
-            this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_nuevo);
@@ -643,7 +539,6 @@
             this.Controls.Add(this.btn_modificar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.Lbl_titulo);
-            this.Controls.Add(this.lbl_imagen);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEmpleado";
@@ -651,7 +546,6 @@
             this.Text = "Empleado";
             this.Load += new System.EventHandler(this.Empleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_empleado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_empleado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_diremp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_correo)).EndInit();
@@ -663,22 +557,12 @@
         #endregion
         private System.Windows.Forms.Label Lbl_titulo;
         private System.Windows.Forms.DataGridView dgv_empleado;
-        private System.Windows.Forms.Button btn_aceptar;
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Button btn_nuevo;
         private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.Button btn_guardar;
-        private System.Windows.Forms.PictureBox pic_empleado;
-        private System.Windows.Forms.Label lbl_imagen;
-        private System.Windows.Forms.Label lbl_aceptar;
-        private System.Windows.Forms.Label lbl_cancelar;
-        private System.Windows.Forms.Label lbl_buscar;
-        private System.Windows.Forms.Label lbl_eliminar;
-        private System.Windows.Forms.Label lbl_actualizar;
-        private System.Windows.Forms.Label lbl_guardar;
-        private System.Windows.Forms.Label lbl_nuevo;
         private System.Windows.Forms.TextBox txt_correo1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_calle1;
@@ -716,5 +600,6 @@
         private System.Windows.Forms.DataGridView dgv_diremp;
         private System.Windows.Forms.DataGridView dgv_telemp;
         private System.Windows.Forms.DataGridView dgv_correo;
+        private System.Windows.Forms.Button btn_ayuda;
     }
 }

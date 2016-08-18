@@ -15,9 +15,11 @@ namespace sistemareparto
 
             int retorno = 0;
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format("Insert into empleado (pk_codpuesto, pnom_emp, snom_emp, papel_emp, sapel_emp, fec_nac_emp, nit_emp, sueldo_emp, estado_emp) values ('{0}','{1}','{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
-                pEmpleado.idp, pEmpleado.pnombre, pEmpleado.snombre, pEmpleado.papellido, pEmpleado.sapellido, pEmpleado.fecha_nac, pEmpleado.nit, pEmpleado.sueldo, pEmpleado.estado), clsBdComun.ObtenerConexion());
+                pEmpleado.idp, pEmpleado.pnombre, pEmpleado.snombre, pEmpleado.papellido, pEmpleado.sapellido, pEmpleado.fecha_nac, pEmpleado.nit, pEmpleado.sueldo, pEmpleado.estado), conectar);
             retorno = comando.ExecuteNonQuery();
+            conectar.Close();
             return retorno;
         }
 
@@ -25,8 +27,9 @@ namespace sistemareparto
         {
             List<clsEmpleado> _lista = new List<clsEmpleado>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codemp, pk_codpuesto, pnom_emp, snom_emp, papel_emp, sapel_emp, fec_nac_emp, nit_emp, sueldo_emp, estado_emp FROM empleado where pnom_emp ='{0}' or papel_emp='{1}'", pNombre, pApellido), clsBdComun.ObtenerConexion());
+           "SELECT pk_codemp, pk_codpuesto, pnom_emp, snom_emp, papel_emp, sapel_emp, fec_nac_emp, nit_emp, sueldo_emp, estado_emp FROM empleado where pnom_emp ='{0}' or papel_emp='{1}'", pNombre, pApellido), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -59,7 +62,7 @@ namespace sistemareparto
 
                 _lista.Add(pEmpleado);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -123,8 +126,9 @@ namespace sistemareparto
         {
             List<clsEmpleado> _lista = new List<clsEmpleado>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codemp, pk_codpuesto, pnom_emp, snom_emp, papel_emp, sapel_emp, fec_nac_emp, nit_emp, sueldo_emp, estado_emp FROM empleado"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codemp, pk_codpuesto, pnom_emp, snom_emp, papel_emp, sapel_emp, fec_nac_emp, nit_emp, sueldo_emp, estado_emp FROM empleado"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -157,7 +161,7 @@ namespace sistemareparto
 
                 _lista.Add(pEmpleado);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -165,8 +169,9 @@ namespace sistemareparto
         {
             List<clsDiremp> _lista = new List<clsDiremp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codemp, zona_dir_emp, calle_dir_emp, aven_dir_emp FROM direccion_emp"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -193,7 +198,7 @@ namespace sistemareparto
 
                 _lista.Add(pDiremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -201,8 +206,9 @@ namespace sistemareparto
         {
             List<clsTelemp> _lista = new List<clsTelemp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codemp, telefono FROM telefono_emp"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codemp, telefono FROM telefono_emp"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -227,7 +233,7 @@ namespace sistemareparto
 
                 _lista.Add(pTelemp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -235,8 +241,9 @@ namespace sistemareparto
         {
             List<clsCorreoemp> _lista = new List<clsCorreoemp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_codemp, correo FROM correo_emp"), clsBdComun.ObtenerConexion());
+           "SELECT pk_codemp, correo FROM correo_emp"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -261,7 +268,7 @@ namespace sistemareparto
 
                 _lista.Add(pCoremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -269,8 +276,9 @@ namespace sistemareparto
         {
             List<clsDiremp> _lista = new List<clsDiremp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT  d.pk_codemp, d.zona_dir_emp, d.calle_dir_emp, d.aven_dir_emp, e.pk_codemp, e.pnom_emp, e.papel_emp FROM direccion_emp d, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = d.pk_codemp", pNombre, pApellido), clsBdComun.ObtenerConexion());
+           "SELECT  d.pk_codemp, d.zona_dir_emp, d.calle_dir_emp, d.aven_dir_emp, e.pk_codemp, e.pnom_emp, e.papel_emp FROM direccion_emp d, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = d.pk_codemp", pNombre, pApellido), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -287,7 +295,7 @@ namespace sistemareparto
 
                 _lista.Add(pDiremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -317,8 +325,9 @@ namespace sistemareparto
         {
             List<clsTelemp> _lista = new List<clsTelemp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT  t.pk_codemp, t.telefono, e.pk_codemp, e.pnom_emp, e.papel_emp FROM telefono_emp t, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = t.pk_codemp", pNombre, pApellido), clsBdComun.ObtenerConexion());
+           "SELECT  t.pk_codemp, t.telefono, e.pk_codemp, e.pnom_emp, e.papel_emp FROM telefono_emp t, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = t.pk_codemp", pNombre, pApellido), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -333,7 +342,7 @@ namespace sistemareparto
 
                 _lista.Add(ptelemp);
             }
-
+            conectar.Close();
             return _lista;
         }
 
@@ -360,8 +369,9 @@ namespace sistemareparto
         {
             List<clsCorreoemp> _lista = new List<clsCorreoemp>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT  c.pk_codemp, c.correo, e.pk_codemp, e.pnom_emp, e.papel_emp FROM correo_emp c, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = c.pk_codemp", pNombre, pApellido), clsBdComun.ObtenerConexion());
+           "SELECT  c.pk_codemp, c.correo, e.pk_codemp, e.pnom_emp, e.papel_emp FROM correo_emp c, empleado e where e.pnom_emp = '{0}' or e.papel_emp = '{1}' and e.pk_codemp = c.pk_codemp", pNombre, pApellido), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -376,7 +386,7 @@ namespace sistemareparto
 
                 _lista.Add(pcoremp);
             }
-
+            conectar.Close();
             return _lista;
         }
 

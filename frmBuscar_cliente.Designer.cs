@@ -131,7 +131,7 @@
             // 
             this.lbl_titulo.AutoSize = true;
             this.lbl_titulo.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(244, 24);
+            this.lbl_titulo.Location = new System.Drawing.Point(260, 22);
             this.lbl_titulo.Name = "lbl_titulo";
             this.lbl_titulo.Size = new System.Drawing.Size(228, 32);
             this.lbl_titulo.TabIndex = 120;
@@ -226,6 +226,7 @@
             this.Name = "frmBuscar_cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar_cliente";
+            this.Load += new System.EventHandler(this.frmBuscar_cliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_buscac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_buscdir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_busctel)).EndInit();

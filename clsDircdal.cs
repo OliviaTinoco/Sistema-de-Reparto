@@ -14,9 +14,11 @@ namespace sistemareparto
 
             int retorno = 0;
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand comando = new MySqlCommand(string.Format("Insert into direccion_clte (pk_codclte, zona_dir_clte, calle_dir_clte, aven_dir_clte) values ('{0}','{1}','{2}','{3}')",
-               pDircliente.idc, pDircliente.zona, pDircliente.calle, pDircliente.avenida), clsBdComun.ObtenerConexion());
+               pDircliente.idc, pDircliente.zona, pDircliente.calle, pDircliente.avenida), conectar);
             retorno = comando.ExecuteNonQuery();
+            conectar.Close();
             return retorno;
         }
 
@@ -24,8 +26,9 @@ namespace sistemareparto
         {
             List<clsDircliente> _lista = new List<clsDircliente>();
 
+            MySqlConnection conectar = clsBdComun.ObtenerConexion();
             MySqlCommand _comando = new MySqlCommand(String.Format(
-           "SELECT pk_coddirclte, pk_codclte, zona_dir_clte, calle_dir_clte, aven_dir_clte FROM  direccion_clte"), clsBdComun.ObtenerConexion());
+           "SELECT pk_coddirclte, pk_codclte, zona_dir_clte, calle_dir_clte, aven_dir_clte FROM  direccion_clte"), conectar);
             MySqlDataReader _reader = _comando.ExecuteReader();
             while (_reader.Read())
             {
@@ -42,7 +45,7 @@ namespace sistemareparto
 
                 _lista.Add(pDircliente);
             }
-
+            conectar.Close();
             return _lista;
         }
     }
